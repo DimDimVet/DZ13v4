@@ -1,4 +1,5 @@
 //using Photon.Pun;
+using Fusion;
 using System.ComponentModel;
 using Unity.Mathematics;
 using UnityEngine;
@@ -16,9 +17,13 @@ public class MovePlayer : MonoBehaviour
     private Transform transformCamera;
     private float2 angleCamera;
 
+    private NetworkObject thisOblect;
+
     private bool isRun;
     void Start()
     {
+        thisOblect = GetComponent<NetworkObject>();//найдем компонент
+
         speedMove = moveSettings.SpeedMove;
         //ищем камеру и управление
         dataReg = new RegistratorExecutor();//доступ к листу
@@ -29,7 +34,6 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-
         //ищем если не нашли
         if (isRun == false)
         {
@@ -38,22 +42,22 @@ public class MovePlayer : MonoBehaviour
             {
                 if (rezultListInput.UserInput != null)
                 {
-                    isRun = rezultListInput.PhotonIsMainGO;
+                    isRun=true;
                 }
             }
 
         }
 
-        if (/*PhotonView.Get(this.gameObject).IsMine &&*/ isRun)/*PhotonView.Get(this.gameObject).IsMine*/
+
+        if (thisOblect.HasStateAuthority && isRun) /*PhotonView.Get(this.gameObject).IsMine и thisOblect.HasStateAuthority*/
         {
+
             //ищем если не нашли
             if (rezultListCamera.CameraMove == null)
             {
                 rezultListCamera = dataReg.GetDataCamera();
                 return;
             }
-
-
 
             rezultListCamera.CameraMove.GetTransformPointCamera = transformCamera;
             angleCamera = rezultListCamera.CameraMove.AngleCamera;

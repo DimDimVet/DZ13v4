@@ -1,10 +1,11 @@
 
+using Fusion;
 using UnityEngine;
 
 public struct RegistratorConstruction
 {
     public int Hash;
-    public int PhotonHash;
+    public NetworkId PhotonHash;
     public bool IsDestroyGO { get; set; }
     public bool PhotonIsMainGO;
     public ControlInventory ControlInventory;
@@ -14,7 +15,7 @@ public struct RegistratorConstruction
     public CameraMove CameraMove;
     public string Name;
     public UserInput UserInput;
-    public NetworkManager NetworkManager;
+    public NetworkManager NetworkObject;
     public PickUpItem PickUpItem;
 
 }

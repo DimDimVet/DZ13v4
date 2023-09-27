@@ -45,6 +45,6 @@ public class Healt : MonoBehaviour
     {
         dataReg = new RegistratorExecutor();//доступ к листу
         rezultNetManager = dataReg.NetManager();
-        rezultNetManager.NetworkManager.DestroyThisGO(this.gameObject);
+        rezultNetManager.NetworkObject.DestroyThisGO(this.gameObject);
     }
 }

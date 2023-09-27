@@ -1,4 +1,4 @@
-//using Photon.Pun;
+using Fusion;
 using System.Collections;
 using UnityEngine;
 
@@ -23,8 +23,14 @@ public class ShootPlayer : MonoBehaviour
     private float shootDelay;
     private float shootTime = float.MinValue;
 
+    private NetworkObject thisOblect;
+    private ShootNet shootNet;
     private void Start()
     {
+        thisOblect = GetComponent<NetworkObject>();//найдем компонент
+        shootNet = GetComponent<ShootNet>();
+
+
         //ищем управление
         dataReg = new RegistratorExecutor();//доступ к листу
         rezultListInput = dataReg.GetDataPlayer();
@@ -38,7 +44,7 @@ public class ShootPlayer : MonoBehaviour
 
     void Update()
     {
-        if (/*PhotonView.Get(this.gameObject).IsMine*/true)
+        if (/*thisOblect.HasStateAuthority*/true)
         {
             if (rezultListInput.UserInput == null)
             {
@@ -77,10 +83,8 @@ public class ShootPlayer : MonoBehaviour
         //bullFactory.Create();
         CountBull++;
         //Instantiate(bullet, outBullet.position, outBullet.rotation);
-        rezulNetManager.NetworkManager.BullInst(outBullet);
+        //rezulNetManager.NetworkObject.BullInst(outBullet);
+        shootNet.Shoot(bullet,outBullet);
         gunExitParticle.Play();
-        //Photon
-        
-
     }
 }

@@ -1,6 +1,4 @@
-//using Photon.Pun;
 using UnityEngine;
-using Zenject;
 
 public class UserInput : MonoBehaviour
 {

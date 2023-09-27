@@ -60,6 +60,6 @@ public class PickUpItem : MonoBehaviour
     {
         dataReg = new RegistratorExecutor();//доступ к листу
         rezultNetManager = dataReg.NetManager();
-        rezultNetManager.NetworkManager.DestroyThisLut(this.gameObject);
+        rezultNetManager.NetworkObject.DestroyThisLut(this.gameObject);
     }
 }

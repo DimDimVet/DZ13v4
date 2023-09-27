@@ -1,0 +1,5 @@
+mklink /d "G:\UnityProject\DZ13v4Clone\Assets" "G:\UnityProject\DZ13v4\Assets"
+mklink /d "G:\UnityProject\DZ13v4Clone\UserSettings" "G:\UnityProject\DZ13v4\UserSettings"
+mklink /d "G:\UnityProject\DZ13v4Clone\Library" "G:\UnityProject\DZ13v4\Library"
+mklink /d "G:\UnityProject\DZ13v4Clone\ProjectSettings" "G:\UnityProject\DZ13v4\ProjectSettings"
+mklink /d "G:\UnityProject\DZ13v4Clone\Packages" "G:\UnityProject\DZ13v4\Packages"

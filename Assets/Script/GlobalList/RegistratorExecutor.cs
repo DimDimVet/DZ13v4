@@ -53,7 +53,7 @@ public class RegistratorExecutor : IRegistrator
     {
         for (int i = 0; i < GlobalList.DataObject.Count; i++)
         {
-            if (GlobalList.DataObject[i].NetworkManager !=null)
+            if (GlobalList.DataObject[i].NetworkObject !=null)
             {
                 return GlobalList.DataObject[i];
             }

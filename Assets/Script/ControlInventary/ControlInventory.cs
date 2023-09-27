@@ -1,3 +1,4 @@
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class ControlInventory : MonoBehaviour
 {
     public Transform gridTransform;
-    public int GridPlater;
+    public NetworkId GridPlater;
     [SerializeField] private Button openCanvasButton;
     [SerializeField] private Button closeCanvasButton;
     [SerializeField] private Canvas canvas;

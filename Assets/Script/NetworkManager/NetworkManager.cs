@@ -105,14 +105,14 @@ public class NetworkManager /*: MonoBehaviourPunCallbacks*/
 
         for (int i = 0; i < rezultList.Count; i++)
         {
-            if (rezultList[i].PhotonHash == go)
-            {
-                if (rezultList[i].HealtObj != null)
-                {
-                    rezultList[i].HealtObj.DestoyGO();
-                }
+            //if (rezultList[i].PhotonHash == go)
+            //{
+            //    if (rezultList[i].HealtObj != null)
+            //    {
+            //        rezultList[i].HealtObj.DestoyGO();
+            //    }
 
-            }
+            //}
         }
 
     }
@@ -146,14 +146,14 @@ public class NetworkManager /*: MonoBehaviourPunCallbacks*/
 
         for (int i = 0; i < rezultList.Count; i++)
         {
-            if (rezultList[i].PhotonHash == go)
-            {
-                if (rezultList[i].PickUpItem != null)
-                {
-                    rezultList[i].PickUpItem.DestoyGO();
-                }
+            //if (rezultList[i].PhotonHash == go)
+            //{
+            //    if (rezultList[i].PickUpItem != null)
+            //    {
+            //        rezultList[i].PickUpItem.DestoyGO();
+            //    }
 
-            }
+            //}
         }
 
     }

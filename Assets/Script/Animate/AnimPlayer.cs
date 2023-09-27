@@ -1,4 +1,5 @@
 //using Photon.Pun;
+using Fusion;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -21,8 +22,11 @@ public class AnimPlayer : MonoBehaviour
     private float2 distans;
 
     private bool isRun;
+    private NetworkObject thisOblect;
     void Start()
     {
+        thisOblect = GetComponent<NetworkObject>();//найдем компонент
+
         animator = gameObject.GetComponent<Animator>();
         //ищем управление
         dataReg = new RegistratorExecutor();//доступ к листу
@@ -64,7 +68,7 @@ public class AnimPlayer : MonoBehaviour
             }
         }
 
-        if (/*PhotonView.Get(this.gameObject).IsMine && isRun*/true)
+        if (thisOblect.HasStateAuthority && isRun)
         {
             if (rezultListInput.PhotonIsMainGO == false)
             {

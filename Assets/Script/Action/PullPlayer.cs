@@ -1,4 +1,4 @@
-//using Photon.Pun;
+using Fusion;
 using UnityEngine;
 using Zenject;
 
@@ -17,8 +17,13 @@ public class PullPlayer : MonoBehaviour
 
     private float shootDelay;
     private float shootTime = float.MinValue;
+
+    private NetworkObject thisOblect;
     void Start()
     {
+
+        thisOblect = GetComponent<NetworkObject>();//найдем компонент
+
         rigidbodyObj = gameObject.GetComponent<Rigidbody>();
 
         force = moveSettings.Force;
@@ -34,7 +39,7 @@ public class PullPlayer : MonoBehaviour
 
     void Update()
     {
-        if (/*PhotonView.Get(this.gameObject).IsMine*/true)
+        if (thisOblect.HasStateAuthority)
         {
             if (rezultListInput.UserInput == null)
             {

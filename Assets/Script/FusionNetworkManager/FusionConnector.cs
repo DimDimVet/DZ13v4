@@ -12,8 +12,13 @@ public class FusionConnector : MonoBehaviour,INetworkRunnerCallbacks
     [HideInInspector]public NetworkRunner NetworkRunner;
 
     [SerializeField] private NetworkObject playerPrefab;
+    [SerializeField] private NetworkObject bullPrefab;
 
     public string PlayerName;
+    //Bulls
+    public List<GameObject> bulls;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -23,15 +28,9 @@ public class FusionConnector : MonoBehaviour,INetworkRunnerCallbacks
 
         if (ConnectOnAwake==true) 
         {
-            ConnectToRunner("Anonymous");
+            ConnectToRunner("Anon");
         }
     }
-
-    //public void JoinSession(string room)
-    //{
-    //    roomName = room;
-    //    ConnectToRunner();
-    //}
 
     public async void ConnectToRunner(string _playerName)
     {
@@ -48,12 +47,29 @@ public class FusionConnector : MonoBehaviour,INetworkRunnerCallbacks
             //SessionName=roomName,
             SessionName = "TestDZ",
             Scene = 0,
-            PlayerCount =2,
+            PlayerCount =5,
             SceneManager=gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
     }
 
-    public void OnConnectedToServer(NetworkRunner runner)
+
+
+    public void BullInst(Transform outPoint)
+    {
+        for (int i = 0; i < bulls.Count; i++)
+        {
+            if (bulls[i] != null)
+            {
+                NetworkRunner runner = new NetworkRunner();
+                runner.Spawn(bullPrefab, Vector3.zero, Quaternion.identity);
+                //PhotonNetwork.Instantiate(bulls[i].name, outPoint.position, outPoint.rotation);
+            }
+        }
+
+    }
+
+
+    public void OnConnectedToServer(NetworkRunner runner) 
     {
         Debug.Log("OnConnectedToServer - ok");
 
@@ -61,6 +77,9 @@ public class FusionConnector : MonoBehaviour,INetworkRunnerCallbacks
 
         //по сути это именно локальный созданный объект
         runner.SetPlayerObject(runner.LocalPlayer,playerObject);//отслеживание локального игрока, при выходе уничтожает префаб
+
+        //runner.SetPlayerObject(runner.LocalPlayer, playerObject);
+
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
@@ -130,7 +149,7 @@ public class FusionConnector : MonoBehaviour,INetworkRunnerCallbacks
 
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)
     {
-        
+
     }
 
     public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message)
