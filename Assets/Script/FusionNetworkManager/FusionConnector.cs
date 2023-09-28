@@ -12,12 +12,10 @@ public class FusionConnector : MonoBehaviour,INetworkRunnerCallbacks
     [HideInInspector]public NetworkRunner NetworkRunner;
 
     [SerializeField] private NetworkObject playerPrefab;
-    [SerializeField] private NetworkObject bullPrefab;
 
     public string PlayerName;
     //Bulls
-    public List<GameObject> bulls;
-
+    //public List<GameObject> bulls;
 
     private void Awake()
     {
@@ -49,25 +47,9 @@ public class FusionConnector : MonoBehaviour,INetworkRunnerCallbacks
             Scene = 0,
             PlayerCount =5,
             SceneManager=gameObject.AddComponent<NetworkSceneManagerDefault>()
+            
         });
     }
-
-
-
-    public void BullInst(Transform outPoint)
-    {
-        for (int i = 0; i < bulls.Count; i++)
-        {
-            if (bulls[i] != null)
-            {
-                NetworkRunner runner = new NetworkRunner();
-                runner.Spawn(bullPrefab, Vector3.zero, Quaternion.identity);
-                //PhotonNetwork.Instantiate(bulls[i].name, outPoint.position, outPoint.rotation);
-            }
-        }
-
-    }
-
 
     public void OnConnectedToServer(NetworkRunner runner) 
     {

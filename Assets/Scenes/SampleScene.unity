@@ -1210,7 +1210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2022182616}
-  - component: {fileID: 2022182615}
+  - component: {fileID: 2022182617}
   m_Layer: 0
   m_Name: FusionNetworkManager
   m_TagString: Untagged
@@ -1218,25 +1218,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2022182615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022182614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 754c9fc1251b79b48bb19d6675f2c90e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConnectOnAwake: 1
-  NetworkRunner: {fileID: 0}
-  playerPrefab: {fileID: 8488458906046219450, guid: b93b3bf078cbdf542987c18961d7f401, type: 3}
-  bullPrefab: {fileID: 3726355429702096003, guid: fccd8accd9ebf724aa8ffc3508e710e4, type: 3}
-  PlayerName: 
-  bulls:
-  - {fileID: 8743036608834926804, guid: fccd8accd9ebf724aa8ffc3508e710e4, type: 3}
 --- !u!4 &2022182616
 Transform:
   m_ObjectHideFlags: 0
@@ -1252,6 +1233,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2022182617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022182614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754c9fc1251b79b48bb19d6675f2c90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectOnAwake: 1
+  NetworkRunner: {fileID: 0}
+  playerPrefab: {fileID: 3105861541790694953, guid: b93b3bf078cbdf542987c18961d7f401, type: 3}
+  PlayerName: 
 --- !u!1 &2041188550
 GameObject:
   m_ObjectHideFlags: 0

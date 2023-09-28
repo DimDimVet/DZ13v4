@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootPlayer : MonoBehaviour
 {
+    public static ShootPlayer Instance;
     //
     [SerializeField] private ActionSettings actionSettings;
     //
@@ -13,10 +14,10 @@ public class ShootPlayer : MonoBehaviour
 
     [HideInInspector] public int CountBull;
 
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform outBullet;
+    public GameObject bullet;
+    public Transform outBullet;
 
-    [SerializeField] private ParticleSystem gunExitParticle;//система частиц
+    public ParticleSystem gunExitParticle;//система частиц
 
     //соберем в лист стороние скрипты
 
@@ -44,7 +45,7 @@ public class ShootPlayer : MonoBehaviour
 
     void Update()
     {
-        if (/*thisOblect.HasStateAuthority*/true)
+        if (thisOblect.HasStateAuthority)
         {
             if (rezultListInput.UserInput == null)
             {
@@ -84,7 +85,8 @@ public class ShootPlayer : MonoBehaviour
         CountBull++;
         //Instantiate(bullet, outBullet.position, outBullet.rotation);
         //rezulNetManager.NetworkObject.BullInst(outBullet);
-        shootNet.Shoot(bullet,outBullet);
-        gunExitParticle.Play();
+        shootNet.Shoot();
+        //Instantiate(bullet, outBullet.position, outBullet.rotation);
+        //gunExitParticle.Play();
     }
 }

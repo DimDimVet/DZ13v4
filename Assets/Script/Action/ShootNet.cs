@@ -2,16 +2,24 @@
 using System.Collections;
 using UnityEngine;
 using Zenject.SpaceFighter;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ShootNet : NetworkBehaviour
 {
     public static ShootNet Instance;
     [Networked(OnChanged = nameof(OnShootChanged))] public bool IsShoot { get; set; }
 
-
     private GameObject _bullet;
     private Transform _outPoint;
-
+    private ParticleSystem _gunExitParticle;
+    private ShootPlayer _player;
+    private void Start()
+    {
+        _player = GetComponent<ShootPlayer>();
+        _bullet = _player.bullet;
+        _outPoint = _player.outBullet;
+        _gunExitParticle = _player.gunExitParticle;
+    }
     private static void OnShootChanged(Changed<ShootNet> changed)
     {
         //Debug.Log($"Выстрел... {changed.Behaviour.IsShoot}");
@@ -31,15 +39,17 @@ public class ShootNet : NetworkBehaviour
     {
         if (!Object.HasInputAuthority)
         {
-            var gg=Instantiate(_bullet, _outPoint.position, _outPoint.rotation);
-            Debug.Log($"Выстрел... {changed.Behaviour.IsShoot} {gg.gameObject.name}");
+            _gunExitParticle.Play();
+            Instantiate(_bullet, _outPoint.position, _outPoint.rotation);
+            
+            //Debug.Log($"Выстрел... {changed.Behaviour.IsShoot} {gg.gameObject.name}");
+            Debug.Log($"Выстрел... {changed.Behaviour.IsShoot}");
         }
     }
 
-    public void Shoot(GameObject bullet, Transform outPoint)
+    public void Shoot()
     {
-        _bullet = bullet;
-        _outPoint = outPoint;
+        
         //Instantiate(_bullet, _outPoint.position, _outPoint.rotation);
         StartCoroutine(ShootUpDate());
     }
@@ -47,7 +57,6 @@ public class ShootNet : NetworkBehaviour
     private IEnumerator ShootUpDate()
     {
         IsShoot = true;
-
         yield return new WaitForSeconds(0.1f);
         IsShoot = false;
     }
