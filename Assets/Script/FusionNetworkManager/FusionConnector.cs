@@ -36,9 +36,9 @@ public class FusionConnector : MonoBehaviour,INetworkRunnerCallbacks
 
         if (NetworkRunner == null)
         {
-            NetworkRunner = gameObject.AddComponent<NetworkRunner>();
+            NetworkRunner = gameObject.AddComponent<NetworkRunner>();//добавим сам компонент NetworkRunne
         }
-
+        //создание сеанса и его настройки, см. https://doc.photonengine.com/fusion/v2/manual/connection-and-matchmaking/matchmaking
         await NetworkRunner.StartGame(new StartGameArgs 
         {
             GameMode=GameMode.Shared,
