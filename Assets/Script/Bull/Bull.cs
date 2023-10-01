@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Bull : MonoBehaviour
 {
-
     [SerializeField] private BullSettings bullSettings;
 
     private int hashGO;
@@ -60,11 +59,13 @@ public class Bull : MonoBehaviour
         {
             if (rezultListGO.HealtObj!=null)
             {
-                rezultListGO.HealtObj.Damage=damage;
+                rezultListGO.HealtObj.Damage= damage;
+                //rezultListGO.HealtObj.Damage=damage;
             }
             if (rezultListGO.PlayerHealt!=null)
             {
-                rezultListGO.PlayerHealt.Damage=damage;
+                rezultListGO.PlayerHealt.GetDamageRpc(damage);//RPC
+                //rezultListGO.PlayerHealt.Damage=damage;
             }
         }
         else

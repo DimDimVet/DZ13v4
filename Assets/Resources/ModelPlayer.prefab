@@ -6536,6 +6536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796f41f1dfced044ca41474503d7447d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   settingsData: {fileID: 11400000, guid: 259e38a9fd884a4448825187cdfa2e24, type: 2}
   HealtCount: 0
   Damage: 0
@@ -6606,6 +6607,7 @@ MonoBehaviour:
     RawGuidValue: b93b3bf078cbdf542987c18961d7f401
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 4400796157638915742}
   - {fileID: 8121730222568974933}
   - {fileID: 8269623875954097263}
   - {fileID: 3085260605743785257}

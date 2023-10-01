@@ -39,14 +39,13 @@ public class ShootNet : NetworkBehaviour
     //а в методе можно реализовать логику работы у все участников (и сервер и клиента)
     private void OnShoot(Changed<ShootNet> changed)//дубль в сети
     {
-        NetworkObject gg = Object;
         //используем сетевой компонент Fusion - Object, и определим данного клиента
         //если мы не источник события, тогда мы клиент, далее какая то логика
         if (!Object.HasInputAuthority)
         {
             _gunExitParticle.Play();
             Instantiate(_bullet, _outPoint.position, _outPoint.rotation);
-            
+
             Debug.Log($"Выстрел... {changed.Behaviour.IsShoot}");
         }
     }
@@ -61,7 +60,6 @@ public class ShootNet : NetworkBehaviour
     }
     public void Shoot()
     {
-        
         StartCoroutine(ShootUpDate());
     }
 
